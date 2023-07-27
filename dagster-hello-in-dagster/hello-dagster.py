@@ -24,7 +24,7 @@ def hackernews_top_story_ids():
 @asset(deps=[hackernews_top_story_ids])
 def hackernews_top_stories(context: AssetExecutionContext):
     """Get items based on story ids from the HackerNews items endpoint."""
-    with open("hackernews_top_story_idss.json", "r") as f:
+    with open("hackernews_top_story_ids.json", "r") as f:
         hackernews_top_story_ids = json.load(f)
 
     results = []
