@@ -12,7 +12,7 @@ log = logging.getLogger(__name__)
 
 def run(job_input: IJobInput):
     """Get items based on story ids from the HackerNews items endpoint."""
-    with open("hackernews_top_story_ids.json", "r") as f:
+    with open("hackernews_top_story_ids_does_not_exist.json", "r") as f:
         hackernews_top_story_ids = json.load(f)
 
     results = []
