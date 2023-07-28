@@ -23,13 +23,9 @@ list of child stories and stores various other metadata in a csv format. We run
 it once successfully and look at the logs. We then break it, by pointing to a
 non-existant json file in the second step and look at the logs again
 
-### Successful run
+### Successful Local Run
 
-#### Dagster
-
-**Local logs**
-
-On success
+**Dagster**
 
 ```
 2023-07-27 17:25:52 +0300 - dagster - INFO - Using temporary directory /Users/mdilyan/Projects/vdk-dagster-comparison/dagster-hello-in-dagster/tmp4kcf6ogu for storage. This will be removed when dagster dev exits.
@@ -64,60 +60,7 @@ On success
 2023-07-27 17:26:36 +0300 - dagster - DEBUG - __ASSET_JOB - 8c1ead22-48ff-4690-9009-810552b925a3 - 64047 - RUN_SUCCESS - Finished execution of run for "__ASSET_JOB".
 ```
 
-On failure
-
-```
-2023-07-27 17:17:02 +0300 - dagster - INFO - Using temporary directory /Users/mdilyan/Projects/vdk-dagster-comparison/dagster-hello-in-dagster/tmpz8s1rjmt for storage. This will be removed when dagster dev exits.
-2023-07-27 17:17:02 +0300 - dagster - INFO - To persist information across sessions, set the environment variable DAGSTER_HOME to a directory to use.
-2023-07-27 17:17:04 +0300 - dagster - INFO - Launching Dagster services...
-2023-07-27 17:17:07 +0300 - dagster.daemon - INFO - Instance is configured with the following daemons: ['AssetDaemon', 'BackfillDaemon', 'SchedulerDaemon', 'SensorDaemon']
-2023-07-27 17:17:08 +0300 - dagster.daemon.SensorDaemon - INFO - Not checking for any runs since no sensors have been started.
-2023-07-27 17:17:08 +0300 - dagster-webserver - INFO - Serving dagster-webserver on http://127.0.0.1:3000 in process 61735
-2023-07-27 17:17:27 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61803 - RUN_START - Started execution of run for "__ASSET_JOB".
-2023-07-27 17:17:27 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61803 - ENGINE_EVENT - Executing steps using multiprocess executor: parent process (pid: 61803)
-2023-07-27 17:17:27 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61803 - hackernews_top_story_ids - STEP_WORKER_STARTING - Launching subprocess for "hackernews_top_story_ids".
-2023-07-27 17:17:28 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61808 - STEP_WORKER_STARTED - Executing step "hackernews_top_story_ids" in subprocess.
-2023-07-27 17:17:28 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61808 - hackernews_top_story_ids - RESOURCE_INIT_STARTED - Starting initialization of resources [io_manager].
-2023-07-27 17:17:28 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61808 - hackernews_top_story_ids - RESOURCE_INIT_SUCCESS - Finished initialization of resources [io_manager].
-2023-07-27 17:17:28 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61808 - LOGS_CAPTURED - Started capturing logs in process (pid: 61808).
-2023-07-27 17:17:28 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61808 - hackernews_top_story_ids - STEP_START - Started execution of step "hackernews_top_story_ids".
-2023-07-27 17:17:29 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61808 - hackernews_top_story_ids - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
-2023-07-27 17:17:29 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - hackernews_top_story_ids - Writing file at: /Users/mdilyan/Projects/vdk-dagster-comparison/dagster-hello-in-dagster/tmpz8s1rjmt/storage/hackernews_top_story_ids using PickledObjectFilesystemIOManager...
-2023-07-27 17:17:29 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61808 - hackernews_top_story_ids - ASSET_MATERIALIZATION - Materialized value hackernews_top_story_ids.
-2023-07-27 17:17:29 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61808 - hackernews_top_story_ids - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
-2023-07-27 17:17:29 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61803 - hackernews_top_stories - STEP_WORKER_STARTING - Launching subprocess for "hackernews_top_stories".
-2023-07-27 17:17:31 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61815 - STEP_WORKER_STARTED - Executing step "hackernews_top_stories" in subprocess.
-2023-07-27 17:17:31 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61815 - hackernews_top_stories - RESOURCE_INIT_STARTED - Starting initialization of resources [io_manager].
-2023-07-27 17:17:31 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61815 - hackernews_top_stories - RESOURCE_INIT_SUCCESS - Finished initialization of resources [io_manager].
-2023-07-27 17:17:31 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61815 - LOGS_CAPTURED - Started capturing logs in process (pid: 61815).
-2023-07-27 17:17:31 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61815 - hackernews_top_stories - STEP_START - Started execution of step "hackernews_top_stories".
-2023-07-27 17:17:31 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61803 - ENGINE_EVENT - Multiprocess executor: parent process exiting after 4.41s (pid: 61803)
-2023-07-27 17:17:31 +0300 - dagster - ERROR - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61803 - RUN_FAILURE - Execution of run for "__ASSET_JOB" failed. Steps failed: ['hackernews_top_stories'].
-2023-07-27 17:18:08 +0300 - dagster.daemon.SensorDaemon - INFO - Not checking for any runs since no sensors have been started.
-```
-
-**Browser logs**
-
-On success
-
-![img](images/dagster-success-1.png)
-![img](images/dagster-success-2.png)
-![img](images/dagster-success-3.png)
-![img](images/dagster-success-4.png)
-![img](images/dagster-success-5.png)
-![img](images/dagster-success-6.png)
-
-On error
-
-![img](images/dagster-error-1.png)
-![img](images/dagster-error-2.png)
-![img](images/dagster-error-3.png)
-
-#### VDK
-
-**Local logs**
-
-On success
+**VDK**
 
 ```
 Versatile Data Kit (VDK)
@@ -177,7 +120,41 @@ Run job with directory /Users/mdilyan/Projects/vdk-dagster-comparison/dagster-he
 }
 
 ```
-On error
+### Failed Local Run
+
+**Dagster**
+
+```
+2023-07-27 17:17:02 +0300 - dagster - INFO - Using temporary directory /Users/mdilyan/Projects/vdk-dagster-comparison/dagster-hello-in-dagster/tmpz8s1rjmt for storage. This will be removed when dagster dev exits.
+2023-07-27 17:17:02 +0300 - dagster - INFO - To persist information across sessions, set the environment variable DAGSTER_HOME to a directory to use.
+2023-07-27 17:17:04 +0300 - dagster - INFO - Launching Dagster services...
+2023-07-27 17:17:07 +0300 - dagster.daemon - INFO - Instance is configured with the following daemons: ['AssetDaemon', 'BackfillDaemon', 'SchedulerDaemon', 'SensorDaemon']
+2023-07-27 17:17:08 +0300 - dagster.daemon.SensorDaemon - INFO - Not checking for any runs since no sensors have been started.
+2023-07-27 17:17:08 +0300 - dagster-webserver - INFO - Serving dagster-webserver on http://127.0.0.1:3000 in process 61735
+2023-07-27 17:17:27 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61803 - RUN_START - Started execution of run for "__ASSET_JOB".
+2023-07-27 17:17:27 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61803 - ENGINE_EVENT - Executing steps using multiprocess executor: parent process (pid: 61803)
+2023-07-27 17:17:27 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61803 - hackernews_top_story_ids - STEP_WORKER_STARTING - Launching subprocess for "hackernews_top_story_ids".
+2023-07-27 17:17:28 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61808 - STEP_WORKER_STARTED - Executing step "hackernews_top_story_ids" in subprocess.
+2023-07-27 17:17:28 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61808 - hackernews_top_story_ids - RESOURCE_INIT_STARTED - Starting initialization of resources [io_manager].
+2023-07-27 17:17:28 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61808 - hackernews_top_story_ids - RESOURCE_INIT_SUCCESS - Finished initialization of resources [io_manager].
+2023-07-27 17:17:28 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61808 - LOGS_CAPTURED - Started capturing logs in process (pid: 61808).
+2023-07-27 17:17:28 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61808 - hackernews_top_story_ids - STEP_START - Started execution of step "hackernews_top_story_ids".
+2023-07-27 17:17:29 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61808 - hackernews_top_story_ids - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
+2023-07-27 17:17:29 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - hackernews_top_story_ids - Writing file at: /Users/mdilyan/Projects/vdk-dagster-comparison/dagster-hello-in-dagster/tmpz8s1rjmt/storage/hackernews_top_story_ids using PickledObjectFilesystemIOManager...
+2023-07-27 17:17:29 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61808 - hackernews_top_story_ids - ASSET_MATERIALIZATION - Materialized value hackernews_top_story_ids.
+2023-07-27 17:17:29 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61808 - hackernews_top_story_ids - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+2023-07-27 17:17:29 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61803 - hackernews_top_stories - STEP_WORKER_STARTING - Launching subprocess for "hackernews_top_stories".
+2023-07-27 17:17:31 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61815 - STEP_WORKER_STARTED - Executing step "hackernews_top_stories" in subprocess.
+2023-07-27 17:17:31 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61815 - hackernews_top_stories - RESOURCE_INIT_STARTED - Starting initialization of resources [io_manager].
+2023-07-27 17:17:31 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61815 - hackernews_top_stories - RESOURCE_INIT_SUCCESS - Finished initialization of resources [io_manager].
+2023-07-27 17:17:31 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61815 - LOGS_CAPTURED - Started capturing logs in process (pid: 61815).
+2023-07-27 17:17:31 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61815 - hackernews_top_stories - STEP_START - Started execution of step "hackernews_top_stories".
+2023-07-27 17:17:31 +0300 - dagster - DEBUG - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61803 - ENGINE_EVENT - Multiprocess executor: parent process exiting after 4.41s (pid: 61803)
+2023-07-27 17:17:31 +0300 - dagster - ERROR - __ASSET_JOB - e353021e-8236-4121-a43f-749ff3bc5431 - 61803 - RUN_FAILURE - Execution of run for "__ASSET_JOB" failed. Steps failed: ['hackernews_top_stories'].
+2023-07-27 17:18:08 +0300 - dagster.daemon.SensorDaemon - INFO - Not checking for any runs since no sensors have been started.
+```
+
+**VDK**
 
 ```
 Versatile Data Kit (VDK)
@@ -359,12 +336,29 @@ WHY IT HAPPENED : An exception occurred, exception message was: [Errno 2] No suc
 COUNTERMEASURES : See exception and fix the root cause, so that the exception does not appear anymore.
 ```
 
-**Browser logs**
+### Successful Browser Run
 
-On Success
+**Dagster**
+
+![img](images/dagster-success-1.png)
+![img](images/dagster-success-2.png)
+![img](images/dagster-success-3.png)
+![img](images/dagster-success-4.png)
+![img](images/dagster-success-5.png)
+![img](images/dagster-success-6.png)
+
+**VDK**
 
 ![img](images/vdk-success.png)
 
-On Error
+### Failed Browser Run
+
+**Dagster**
+
+![img](images/dagster-error-1.png)
+![img](images/dagster-error-2.png)
+![img](images/dagster-error-3.png)
+
+**VDK**
 
 ![img](images/vdk-error.png)
