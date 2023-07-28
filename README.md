@@ -14,6 +14,19 @@ both jobs are analyzed and compared on the basis of usability and readability.
 
 ## Areas of improvement
 
+Local
+
+- html-readable logs
+- live logging
+- viewing of assets in logs or as part of logs
+- error messages can also be treated like assets
+- progress indicators when deploying and executing data jobs
+
+Cloud
+
+- reduce log verbosity
+- move logs to the appropriate levels
+
 # Logs Examples
 
 ## Hello Dagster
@@ -365,9 +378,12 @@ COUNTERMEASURES : See exception and fix the root cause, so that the exception do
 
 ## CSV Ingestion
 
-This is an example using a VDK plugin. We copied it and converted it to a
-regular data job. We break it by changing the header and adding a space, e.g.
-"First Name", instead of "FirstName"
+Based on an [example using a VDK
+plugin](https://github.com/vmware/versatile-data-kit/wiki/Ingesting-local-CSV-file-into-Database).
+We copied the job inside the plugin code and converted it to a regular data job.
+
+We break it by changing the header and
+adding a space, e.g. "First Name", instead of "FirstName"
 
 ### Successful Local Run
 
