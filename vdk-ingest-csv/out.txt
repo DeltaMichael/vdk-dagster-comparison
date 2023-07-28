@@ -1,0 +1,273 @@
+Versatile Data Kit (VDK)
+Version: 0.3.944573153
+Build details: RELEASE_VERSION=0.3.944573153, BUILD_DATE=Tue Jul 25 10:49:05 UTC 2023, BUILD_MACHINE_INFO=Linux runner-5w-mmpfk-project-28359933-concurrent-09ktj5 5.4.235-144.344.amzn2.x86_64 #1 SMP Sun Mar 12 12:50:22 UTC 2023 x86_64 GNU/Linux, GITLAB_CI_JOB_ID=4735221896, GIT_COMMIT_SHA=94717d382deb75b5c3b23992b13a75e1bd0e384b, GIT_BRANCH=main
+Python version: 3.11.4 64bit (/opt/homebrew/opt/python@3.11/bin/python3.11)
+
+Installed plugins:
+vdk-server (from package vdk-server, version 0.1.927572457)
+vdk-sqlite (from package vdk-sqlite, version 0.1.824443273)
+vdk-control-service-properties (from package vdk-plugin-control-cli, version 0.1.928743296)
+vdk-execution-skip (from package vdk-plugin-control-cli, version 0.1.928743296)
+vdk-plugin-control-cli (from package vdk-plugin-control-cli, version 0.1.928743296)
+vdk-ingest-file (from package vdk-ingest-file, version 0.1.824443273)
+vdk-ingest-http (from package vdk-ingest-http, version 0.2.824443273)
+vdk-csv (from package vdk-csv, version 0.1.824443273)
+vdk-logging-format (from package vdk-logging-format, version 0.1.824443273)
+--------------------------------------------------------------------------------
+Run job with directory /opt/homebrew/lib/python3.11/site-packages/vdk/plugin/csv/csv_ingest_job
+Missing config.ini file.
+2023-07-28 12:17:16,471 [VDK] csv_ingest_job [INFO ] vdk.plugin.control_cli_plugin. properties_plugin.py:30   initialize_job  [id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- Control Service REST API URL is not configured. Will not initialize Control Service based Properties client implementation.
+2023-07-28 12:17:16,471 [VDK] csv_ingest_job [INFO ] vdk.plugin.control_cli_plugin.    execution_skip.py:105  _skip_job_if_nec[id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- Checking if job should be skipped:
+2023-07-28 12:17:16,471 [VDK] csv_ingest_job [INFO ] vdk.plugin.control_cli_plugin.    execution_skip.py:106  _skip_job_if_nec[id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- Job : csv_ingest_job, Team : None, Log config: LOCAL, execution_id: d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836
+2023-07-28 12:17:16,471 [VDK] csv_ingest_job [INFO ] root                              execution_skip.py:111  _skip_job_if_nec[id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- Local execution, skipping parallel execution check.
+2023-07-28 12:17:16,471 [VDK] csv_ingest_job [INFO ] vdk.internal.builtin_plugins.r   file_based_step.py:102  run_python_step [id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- Entering csv_ingest_step.py#run(...) ...
+2023-07-28 12:17:16,878 [VDK] csv_ingest_job [INFO ] vdk.internal.builtin_plugins.i   ingester_router.py:123  send_tabular_dat[id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- Sending tabular data for ingestion with method: sqlite and target: vdk-sqlite.db
+2023-07-28 12:17:16,879 [VDK] csv_ingest_job [INFO ] vdk.internal.builtin_plugins.i     ingester_base.py:174  send_tabular_dat[id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- Posting for ingestion data for table my_csv_example_table with columns ['first name', 'LastName', 'Position'] against endpoint vdk-sqlite.db
+2023-07-28 12:17:16,879 [VDK] csv_ingest_job [INFO ] step_csv_ingest_ste              csv_ingest_step.py:28   ingest          [id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- Ingested data from /Users/mdilyan/Projects/vdk-dagster-comparison/vdk-ingest-csv/csv_example.csv into table my_csv_example_table successfully.
+2023-07-28 12:17:16,879 [VDK] csv_ingest_job [INFO ] vdk.internal.builtin_plugins.r   file_based_step.py:108  run_python_step [id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- Exiting  csv_ingest_step.py#run(...) SUCCESS
+2023-07-28 12:17:18,885 [VDK] csv_ingest_job [INFO ] vdk.plugin.sqlite.ingest_to_sq  ingest_to_sqlite.py:76   ingest_payload  [id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- Ingesting payloads for target: vdk-sqlite.db; collection_id: csv_ingest_job|d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836
+2023-07-28 12:17:18,885 [VDK] csv_ingest_job [INFO ] vdk.plugin.sqlite.sqlite_conne sqlite_connection.py:29   new_connection  [id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- Creating new connection against local file database located at: vdk-sqlite.db
+2023-07-28 12:17:18,889 [VDK] csv_ingest_job [INFO ] vdk.plugin.sqlite.ingest_to_sq  ingest_to_sqlite.py:190  __create_table_i[id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- Table my_csv_example_table does not exists. Will auto-create it now based on first batch of input data.
+2023-07-28 12:17:18,893 [VDK] csv_ingest_job [INFO ] vdk.plugin.sqlite.ingest_to_sq  ingest_to_sqlite.py:196  __create_table_i[id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- Table my_csv_example_table created.
+2023-07-28 12:17:18,894 [VDK] csv_ingest_job [ERROR] vdk.plugin.sqlite.ingest_to_sq            errors.py:438  log_and_rethrow [id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- An error in data job code  occurred. The error should be resolved by ResolvableByActual.USER. Here are the details:
+  WHAT HAPPENED : Failed to sent payload
+WHY IT HAPPENED : One or more column names in the input data did NOT
+                        match corresponding column names in the database.
+                           Input Table Columns: ['first name', 'LastName', 'Position']
+                        Database Table Columns: ['first', 'LastName', 'Position']
+   CONSEQUENCES : Will not be able to send the payload for ingestion
+COUNTERMEASURES : See error message for help
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/plugin/sqlite/ingest_to_sqlite.py", line 96, in __ingest_payload
+    cur.execute(query, obj)
+sqlite3.ProgrammingError: You did not supply a value for binding parameter :first.
+2023-07-28 12:17:18,895 [VDK] csv_ingest_job [ERROR] vdk.internal.builtin_plugins.i     ingester_base.py:485  _payload_poster_[id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- An user error occurred while ingesting data.
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/plugin/sqlite/ingest_to_sqlite.py", line 96, in __ingest_payload
+    cur.execute(query, obj)
+sqlite3.ProgrammingError: You did not supply a value for binding parameter :first.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/ingestion/ingester_base.py", line 465, in _payload_poster_thread
+    ingestion_metadata = self._ingester.ingest_payload(
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/plugin/sqlite/ingest_to_sqlite.py", line 87, in ingest_payload
+    self.__ingest_payload(destination_table, payload, cur)
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/plugin/sqlite/ingest_to_sqlite.py", line 100, in __ingest_payload
+    errors.log_and_rethrow(
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/core/errors.py", line 442, in log_and_rethrow
+    raise to_be_raised_exception from exception if wrap_in_vdk_error else exception
+vdk.internal.core.errors.UserCodeError: An error in data job code  occurred. The error should be resolved by ResolvableByActual.USER. Here are the details:
+  WHAT HAPPENED : Failed to sent payload
+WHY IT HAPPENED : One or more column names in the input data did NOT
+                        match corresponding column names in the database.
+                           Input Table Columns: ['first name', 'LastName', 'Position']
+                        Database Table Columns: ['first', 'LastName', 'Position']
+   CONSEQUENCES : Will not be able to send the payload for ingestion
+COUNTERMEASURES : See error message for help
+2023-07-28 12:17:18,897 [VDK] csv_ingest_job [WARNI] vdk.internal.builtin_plugins.i     ingester_base.py:495  _payload_poster_[id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- Failed to ingest a payload. One or more rows were not ingested.
+Exception was: An error in data job code  occurred. The error should be resolved by ResolvableByActual.USER. Here are the details:
+  WHAT HAPPENED : Failed to sent payload
+WHY IT HAPPENED : One or more column names in the input data did NOT
+                        match corresponding column names in the database.
+                           Input Table Columns: ['first name', 'LastName', 'Position']
+                        Database Table Columns: ['first', 'LastName', 'Position']
+   CONSEQUENCES : Will not be able to send the payload for ingestion
+COUNTERMEASURES : See error message for help
+2023-07-28 12:17:18,911 [VDK] csv_ingest_job [ERROR] vdk.internal.builtin_plugins.i            errors.py:393  log_and_throw   [id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- A Platform service error  occurred. The error should be resolved by ResolvableByActual.PLATFORM. Here are the details:
+  WHAT HAPPENED : Failed to post all data for ingestion successfully.
+WHY IT HAPPENED : Payloads failed to get posted for ingestion
+   CONSEQUENCES : Some data will not be ingested.
+COUNTERMEASURES : There has been temporary failure. You can retry the data job again. If error persist inspect logs and check ingest plugin documentation.
+Traceback (most recent call first):
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/ingestion/ingester_base.py", line 669, in _log_and_throw
+    errors.log_and_throw(
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/ingestion/ingester_base.py", line 656, in __handle_results
+    self._log_and_throw(
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/ingestion/ingester_base.py", line 564, in close_now
+    self.__handle_results()
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/ingestion/ingester_base.py", line 556, in close
+    self.close_now()
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/ingestion/ingester_router.py", line 288, in close
+    ingester.close()
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/ingestion/ingester_configuration_plugin.py", line 88, in finalize_job
+    context.ingester.close()
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_callers.py", line 39, in _multicall
+    res = hook_impl.function(*args)
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_manager.py", line 80, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_hooks.py", line 265, in __call__
+    return self._hookexec(self.name, self.get_hookimpls(), kwargs, firstresult)
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/run/data_job.py", line 339, in run
+    self._plugin_hook.finalize_job(context=job_context)
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/run/cli_run.py", line 143, in create_and_run_data_job
+    execution_result = job.run(args)
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/run/cli_run.py", line 220, in run
+    run_impl.create_and_run_data_job(
+  File "/opt/homebrew/lib/python3.11/site-packages/click/decorators.py", line 26, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "/opt/homebrew/lib/python3.11/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/plugin/csv/csv_plugin.py", line 80, in ingest_csv
+    ctx.invoke(
+  File "/opt/homebrew/lib/python3.11/site-packages/click/decorators.py", line 26, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "/opt/homebrew/lib/python3.11/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+  File "/opt/homebrew/lib/python3.11/site-packages/click/core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/opt/homebrew/lib/python3.11/site-packages/click/core.py", line 1657, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/opt/homebrew/lib/python3.11/site-packages/click/core.py", line 1055, in main
+    rv = self.invoke(ctx)
+  File "/opt/homebrew/lib/python3.11/site-packages/click/core.py", line 1130, in __call__
+    return self.main(*args, **kwargs)
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/cli_entry.py", line 95, in vdk_cli_execute
+    exit_code = root_command(
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_callers.py", line 39, in _multicall
+    res = hook_impl.function(*args)
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_manager.py", line 80, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_hooks.py", line 265, in __call__
+    return self._hookexec(self.name, self.get_hookimpls(), kwargs, firstresult)
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/cli_entry.py", line 136, in vdk_main
+    ).vdk_cli_execute(
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_callers.py", line 39, in _multicall
+    res = hook_impl.function(*args)
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_manager.py", line 80, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_hooks.py", line 265, in __call__
+    return self._hookexec(self.name, self.get_hookimpls(), kwargs, firstresult)
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/cli_entry.py", line 183, in main
+    exit_code = cast(InternalHookSpecs, plugin_registry.hook()).vdk_main(
+  File "/opt/homebrew/bin/vdk", line 8, in <module>
+    sys.exit(main())
+
+2023-07-28 12:17:18,911 [VDK] csv_ingest_job [WARNI] vdk.internal.builtin_plugins.i   ingester_router.py:291  close           [id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- Closing of ingester for method `sqlite` failed. Exception was: A Platform service error  occurred. The error should be resolved by ResolvableByActual.PLATFORM. Here are the details:
+  WHAT HAPPENED : Failed to post all data for ingestion successfully.
+WHY IT HAPPENED : Payloads failed to get posted for ingestion
+   CONSEQUENCES : Some data will not be ingested.
+COUNTERMEASURES : There has been temporary failure. You can retry the data job again. If error persist inspect logs and check ingest plugin documentation.
+2023-07-28 12:17:18,912 [VDK] csv_ingest_job [ERROR] vdk.internal.builtin_plugins.r            errors.py:438  log_and_rethrow [id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- A Platform service error  occurred. The error should be resolved by ResolvableByActual.PLATFORM. Here are the details:
+  WHAT HAPPENED : Failed executing job.
+WHY IT HAPPENED : An exception occurred, exception message was: Ingesting data failed
+  WHAT HAPPENED : On close some following ingest queues types reported errors:  ['sqlite'].
+WHY IT HAPPENED : There were errors while closing ingestion. Exceptions were: {'sqlite': PlatformServiceError('A Platform service error  occurred. The error should be resolved by ResolvableByActual.PLATFORM. Here are the details:\n  WHAT HAPPENED : Failed to post all data for ingestion successfully.\nWHY IT HAPPENED : Payloads failed to get posted for ingestion\n   CONSEQUENCES : Some data will not be ingested.\nCOUNTERMEASURES : There has been temporary failure. You can retry the data job again. If error persist inspect logs and check ingest plugin documentation.')}.
+   CONSEQUENCES : Some data was partially ingested or not ingested at all.
+COUNTERMEASURES : Follow the instructions in the error messages and log warnings. Make sure to inspect any errors or warning logs generatedRe-try the job if necessary
+   CONSEQUENCES : The provided Data Job will not be executed. Terminating application.
+COUNTERMEASURES : See contents of the exception and fix the problem that causes it. Most likely a prerequisite or plugin of one of the key VDK components failed, see logs for details and ensure the prerequisite for the failed component (details in stacktrace).
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/run/cli_run.py", line 143, in create_and_run_data_job
+    execution_result = job.run(args)
+                       ^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/run/data_job.py", line 339, in run
+    self._plugin_hook.finalize_job(context=job_context)
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_hooks.py", line 265, in __call__
+    return self._hookexec(self.name, self.get_hookimpls(), kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_manager.py", line 80, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_callers.py", line 60, in _multicall
+    return outcome.get_result()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_result.py", line 60, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_callers.py", line 39, in _multicall
+    res = hook_impl.function(*args)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/ingestion/ingester_configuration_plugin.py", line 88, in finalize_job
+    context.ingester.close()
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/ingestion/ingester_router.py", line 318, in close
+    raise PlatformServiceError(message)
+vdk.internal.core.errors.PlatformServiceError: Ingesting data failed
+  WHAT HAPPENED : On close some following ingest queues types reported errors:  ['sqlite'].
+WHY IT HAPPENED : There were errors while closing ingestion. Exceptions were: {'sqlite': PlatformServiceError('A Platform service error  occurred. The error should be resolved by ResolvableByActual.PLATFORM. Here are the details:\n  WHAT HAPPENED : Failed to post all data for ingestion successfully.\nWHY IT HAPPENED : Payloads failed to get posted for ingestion\n   CONSEQUENCES : Some data will not be ingested.\nCOUNTERMEASURES : There has been temporary failure. You can retry the data job again. If error persist inspect logs and check ingest plugin documentation.')}.
+   CONSEQUENCES : Some data was partially ingested or not ingested at all.
+COUNTERMEASURES : Follow the instructions in the error messages and log warnings. Make sure to inspect any errors or warning logs generatedRe-try the job if necessary
+2023-07-28 12:17:18,913 [VDK] csv_ingest_job [ERROR] vdk.internal.cli_entry                 cli_entry.py:156  vdk_main        [id:d3cdc3a1-647c-4c78-bea3-80be39e80604-1690535836-d6e09]- Exiting with exception.
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/cli_entry.py", line 136, in vdk_main
+    ).vdk_cli_execute(
+      ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_hooks.py", line 265, in __call__
+    return self._hookexec(self.name, self.get_hookimpls(), kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_manager.py", line 80, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_callers.py", line 60, in _multicall
+    return outcome.get_result()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_result.py", line 60, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_callers.py", line 39, in _multicall
+    res = hook_impl.function(*args)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/cli_entry.py", line 95, in vdk_cli_execute
+    exit_code = root_command(
+                ^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/click/core.py", line 1130, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/click/core.py", line 1055, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/click/core.py", line 1657, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/click/core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/click/decorators.py", line 26, in new_func
+    return f(get_current_context(), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/plugin/csv/csv_plugin.py", line 80, in ingest_csv
+    ctx.invoke(
+  File "/opt/homebrew/lib/python3.11/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/click/decorators.py", line 26, in new_func
+    return f(get_current_context(), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/run/cli_run.py", line 220, in run
+    run_impl.create_and_run_data_job(
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/run/cli_run.py", line 164, in create_and_run_data_job
+    errors.log_and_rethrow(
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/core/errors.py", line 442, in log_and_rethrow
+    raise to_be_raised_exception from exception if wrap_in_vdk_error else exception
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/run/cli_run.py", line 143, in create_and_run_data_job
+    execution_result = job.run(args)
+                       ^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/run/data_job.py", line 339, in run
+    self._plugin_hook.finalize_job(context=job_context)
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_hooks.py", line 265, in __call__
+    return self._hookexec(self.name, self.get_hookimpls(), kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_manager.py", line 80, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_callers.py", line 60, in _multicall
+    return outcome.get_result()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_result.py", line 60, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File "/opt/homebrew/lib/python3.11/site-packages/pluggy/_callers.py", line 39, in _multicall
+    res = hook_impl.function(*args)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/ingestion/ingester_configuration_plugin.py", line 88, in finalize_job
+    context.ingester.close()
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/ingestion/ingester_router.py", line 318, in close
+    raise PlatformServiceError(message)
+vdk.internal.core.errors.PlatformServiceError: Ingesting data failed
+  WHAT HAPPENED : On close some following ingest queues types reported errors:  ['sqlite'].
+WHY IT HAPPENED : There were errors while closing ingestion. Exceptions were: {'sqlite': PlatformServiceError('A Platform service error  occurred. The error should be resolved by ResolvableByActual.PLATFORM. Here are the details:\n  WHAT HAPPENED : Failed to post all data for ingestion successfully.\nWHY IT HAPPENED : Payloads failed to get posted for ingestion\n   CONSEQUENCES : Some data will not be ingested.\nCOUNTERMEASURES : There has been temporary failure. You can retry the data job again. If error persist inspect logs and check ingest plugin documentation.')}.
+   CONSEQUENCES : Some data was partially ingested or not ingested at all.
+COUNTERMEASURES : Follow the instructions in the error messages and log warnings. Make sure to inspect any errors or warning logs generatedRe-try the job if necessary
+
