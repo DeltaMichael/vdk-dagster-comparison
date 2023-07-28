@@ -389,6 +389,29 @@ adding a space, e.g. "First Name", instead of "FirstName"
 
 **Dagster**
 
+```
+2023-07-28 17:53:44 +0300 - dagster - INFO - Using temporary directory /Users/mdilyan/Projects/vdk-dagster-comparison/dagster-ingest-csv/tmpemmyi08k for storage. This will be removed when dagster dev exits.
+2023-07-28 17:53:44 +0300 - dagster - INFO - To persist information across sessions, set the environment variable DAGSTER_HOME to a directory to use.
+2023-07-28 17:53:44 +0300 - dagster - INFO - Launching Dagster services...
+2023-07-28 17:53:46 +0300 - dagster.daemon - INFO - Instance is configured with the following daemons: ['AssetDaemon', 'BackfillDaemon', 'SchedulerDaemon', 'SensorDaemon']
+2023-07-28 17:53:46 +0300 - dagster.daemon.SensorDaemon - INFO - Not checking for any runs since no sensors have been started.
+2023-07-28 17:53:47 +0300 - dagster-webserver - INFO - Serving dagster-webserver on http://127.0.0.1:3000 in process 52837
+2023-07-28 17:54:05 +0300 - dagster - DEBUG - __ASSET_JOB - 83419b78-d6d0-434e-a7b5-300490d7419c - 52878 - RUN_START - Started execution of run for "__ASSET_JOB".
+2023-07-28 17:54:05 +0300 - dagster - DEBUG - __ASSET_JOB - 83419b78-d6d0-434e-a7b5-300490d7419c - 52878 - ENGINE_EVENT - Executing steps using multiprocess executor: parent process (pid: 52878)
+2023-07-28 17:54:05 +0300 - dagster - DEBUG - __ASSET_JOB - 83419b78-d6d0-434e-a7b5-300490d7419c - 52878 - test_csv - STEP_WORKER_STARTING - Launching subprocess for "test_csv".
+2023-07-28 17:54:08 +0300 - dagster - DEBUG - __ASSET_JOB - 83419b78-d6d0-434e-a7b5-300490d7419c - 52881 - STEP_WORKER_STARTED - Executing step "test_csv" in subprocess.
+2023-07-28 17:54:08 +0300 - dagster - DEBUG - __ASSET_JOB - 83419b78-d6d0-434e-a7b5-300490d7419c - 52881 - test_csv - RESOURCE_INIT_STARTED - Starting initialization of resources [io_manager].
+2023-07-28 17:54:08 +0300 - dagster - DEBUG - __ASSET_JOB - 83419b78-d6d0-434e-a7b5-300490d7419c - 52881 - test_csv - RESOURCE_INIT_SUCCESS - Finished initialization of resources [io_manager].
+2023-07-28 17:54:08 +0300 - dagster - DEBUG - __ASSET_JOB - 83419b78-d6d0-434e-a7b5-300490d7419c - 52881 - LOGS_CAPTURED - Started capturing logs in process (pid: 52881).
+2023-07-28 17:54:08 +0300 - dagster - DEBUG - __ASSET_JOB - 83419b78-d6d0-434e-a7b5-300490d7419c - 52881 - test_csv - STEP_START - Started execution of step "test_csv".
+2023-07-28 17:54:08 +0300 - dagster - DEBUG - __ASSET_JOB - 83419b78-d6d0-434e-a7b5-300490d7419c - 52881 - test_csv - STEP_OUTPUT - Yielded output "result" of type "DataFrame". (Type check passed).
+2023-07-28 17:54:08 +0300 - dagster - DEBUG - __ASSET_JOB - 83419b78-d6d0-434e-a7b5-300490d7419c - 52881 - test_csv - ASSET_MATERIALIZATION - Materialized value test_csv.
+2023-07-28 17:54:08 +0300 - dagster - DEBUG - __ASSET_JOB - 83419b78-d6d0-434e-a7b5-300490d7419c - 52881 - test_csv - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+2023-07-28 17:54:08 +0300 - dagster - DEBUG - __ASSET_JOB - 83419b78-d6d0-434e-a7b5-300490d7419c - 52878 - ENGINE_EVENT - Multiprocess executor: parent process exiting after 2.75s (pid: 52878)
+2023-07-28 17:54:08 +0300 - dagster - DEBUG - __ASSET_JOB - 83419b78-d6d0-434e-a7b5-300490d7419c - 52878 - RUN_SUCCESS - Finished execution of run for "__ASSET_JOB".
+2023-07-28 17:54:52 +0300 - dagster.daemon.SensorDaemon - INFO - Not checking for any runs since no sensors have been started.
+```
+
 **VDK**
 
 ```
@@ -453,6 +476,10 @@ Run job with directory /Users/mdilyan/Projects/vdk-dagster-comparison/vdk-ingest
 ### Failed Local Run
 
 **Dagster**
+
+Could not get it to break the way VDK breaks. It's most likely an issue with the
+SQLlite plugin removing whitespace frome headers, which results in a header to
+column mistmatch.
 
 **VDK**
 

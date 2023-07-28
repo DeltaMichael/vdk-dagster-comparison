@@ -16,8 +16,9 @@ def test_csv(
     context: AssetExecutionContext,
 ) -> pd.DataFrame:  # modify return type signature
     logger = get_dagster_logger()
-    test_csv_url = "https://raw.githubusercontent.com/vmware/versatile-data-kit/main/examples/ingest-csv-file-example/csv_example.csv"
-    # broken_csv_url = "https://hacker-news.firebaseio.com/v0/topstories.json"
+    # test_csv_url = "https://raw.githubusercontent.com/vmware/versatile-data-kit/main/examples/ingest-csv-file-example/csv_example.csv"
+    # broken csv with space in the header
+    test_csv_url = "https://raw.githubusercontent.com/DeltaMichael/vdk-dagster-comparison/main/broken_csv_example.csv"
     input = StringIO(requests.get(test_csv_url).text)
     df = pd.read_csv(input)
     df.dropna(how="all", inplace=True)
