@@ -35,8 +35,10 @@ of visualizations.
 
 Something similar is also done for error logging, where the stack trace is also
 saved to a temp file and is viewable inside a pop-up window in the logs. The
-error is traceable to a specific asset (step). The stack trace is formatted in
-a way that's easy to navigate.
+error is traceable to a specific asset (step). The stack trace is formatted in a
+way that's easy to navigate. The root cause and step are at the top of each
+error. The stack trace comes after it. The next error in the stack is clearly
+separated and follows the same format.
 
 In general, Dagster logs are not as verbose as VDK logs, but they might provide
 information the user does not care about, e.g. PIDs. This is easily solved
@@ -44,20 +46,84 @@ within the UI, as logs can be filtered by event type, for example.
 
 ## VDK
 
-## Areas of improvement
+VDK logging happens almost entirely in the CLI. For cloud deployments, the same
+logs are emitted to an ELK stack or to similar tools. There's a lot of repeating
+information in the logs. If we look at the successful run in the first example,
+the status of each step is logged live. After that, we get the execution
+summary, which is the same information for all the steps put together.
+
+Errors are overly verbose and difficult to follow. The error info sometimes
+comes before the stack trace, sometimes after. In the first example, you can see
+two error infos that come one after another.
+
+```
+  WHAT HAPPENED : Processing step 20_hackernews_top_stories.py completed with error.
+WHY IT HAPPENED : An exception occurred, exception message was: An error in data job code  occurred. The error should be resolved by ResolvableByActual.USER. Here are the details:
+  WHAT HAPPENED : Data Job step 20_hackernews_top_stories.py completed with error.
+WHY IT HAPPENED : An exception occurred, exception message was: [Errno 2] No such file or directory: 'hackernews_top_story_ids_does_not_exist.json'
+   CONSEQUENCES : I will not process the remaining steps (if any), and this Data Job execution will be marked as failed.
+COUNTERMEASURES : See exception and fix the root cause, so that the exception does not appear anymore.
+   CONSEQUENCES : I will not process the remaining steps (if any), and this Data Job execution will be marked as failed.
+COUNTERMEASURES : See exception and fix the root cause, so that the exception does not appear anymore.
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.11/site-packages/vdk/internal/builtin_plugins/run/file_based_step.py", line 139, in invoke_run_function
+    func(**actual_arguments)
+  File "/Users/mdilyan/Projects/vdk-dagster-comparison/dagster-hello-in-vdk/hackernews-top-stories/20_hackernews_top_stories.py", line 15, in run
+    with open("hackernews_top_story_ids_does_not_exist.json", "r") as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'hackernews_top_story_ids_does_not_exist.json'
+```
+
+The error messages are sometimes downright annoying, e.g.
+
+```
+COUNTERMEASURES : See exception and fix the root cause, so that the exception does not appear anymore.
+```
+
+When a data job is deployed or re-deployed, there is no indicator and no deployment logs. You either have
+to follow the advice from CLI.
+
+```
+Uploading the data job might take some time ...
+Request to deploy Data Job hackernews-top-stories using version 26648fc50188f01f52b985d787f3d44ee671722e finished successfully.
+It would take a few minutes for the Data Job to be deployed in the server.
+If notified_on_job_deploy option in config.ini is configured then notification will be sent on successful deploy or in case of an error.
+
+You can also execute `vdk deploy --show -t 'dagster' -n 'hackernews-top-stories'` and compare the printed version to the one of the newly deployed job - 26648fc50188f01f52b985d787f3d44ee671722e - to verify that the deployment was successful.
+```
+
+Not very convenient. Compare to Dagster, where you can change the job code while
+the server is running, re-load and re-materialize the assets from the browser
+UI. The Dagster UI also provides progress indicators and error messages.
+
+Logging in the browser is unusable in VDK. Failing jobs provide no logs and
+successful jobs do not use an html-readable format. It's extremely hard to
+extract any useful information from browser logs as they are now.
+
+## VDK areas of improvement
 
 Local
 
-- html-readable logs
-- live logging
-- viewing of assets in logs or as part of logs
-- error messages can also be treated like assets
-- progress indicators when deploying and executing data jobs
+- viewing of ingested data in logs or have it linked as part of logs
+- error format to be made concise and structured
+  - error message + step + line number on top
+  - stack trace at the bottom
+  - next error, etc.
+  - a good anecdote to support - for the second example, Paul missed the root
+    cause in the logs entirely and I found it on a second pass after missing it
+    the first time around 
+- error messages can also be formateed and saved to file system
+- progress indicators in CLI and UI when deploying and executing data jobs
+  - right now we have to check if the job's verion SHA has changed to see if it was re-deployed correctly
 - tools to pretty-print data job I/O
+- live logging in browser
+- html-readable logs in browser + some simple functionality
+  - filtering by level
+  - searching 
 
 Cloud
 
-- reduce log verbosity
+- reduce log verbosity, eliminate repeating information
 - move logs to the appropriate levels
 
 # Logs Examples
