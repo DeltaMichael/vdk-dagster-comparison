@@ -10,6 +10,38 @@ both jobs are analyzed and compared on the basis of usability and readability.
 
 ## Dagster
 
+Dagster displays data job logs inside the browser. The UI has a feature-rich log
+viewer. Each logged line has an operation (data job step), event type, timestamp
+and level. Log output can be filtered by level. There is also information about
+each step's duration and the dependency graph associated with it. There are also
+CLI logs, but they are not as feature-rich. They only provide basic information
+about each event that's currently happening.
+
+Dagster has a concept of "assets" when dealing with data. Each asset is ingested
+and processed and can then be output to the next asset. Multiple assets can form
+a DAG. Materializing the DAG is somewhat equivalent to the VDK concept of a data
+job. This means that we focus more on the actual data and how it transforms into
+new data than on the steps it takes to transform it. For example, we have three
+assets, the first of which comes from a database, then it gets cleaned and saved
+to the file system as a separate asset, after which we produce a graph from it,
+which is a third asset.
+
+An interesting side effect of focusing on assets when it comes to logging:
+**ingested data, as well as errors are logged and are themselves treated like
+assets.** Dagster provides an API, where you can pass ingested data and some
+markdown formatting options. This produces a markdown file, which is saved in a
+temp folder and is viewable in the logs. Same goes for graphs and other types
+of visualizations.
+
+Something similar is also done for error logging, where the stack trace is also
+saved to a temp file and is viewable inside a pop-up window in the logs. The
+error is traceable to a specific asset (step). The stack trace is formatted in
+a way that's easy to navigate.
+
+In general, Dagster logs are not as verbose as VDK logs, but they might provide
+information the user does not care about, e.g. PIDs. This is easily solved
+within the UI, as logs can be filtered by event type, for example.
+
 ## VDK
 
 ## Areas of improvement
@@ -21,6 +53,7 @@ Local
 - viewing of assets in logs or as part of logs
 - error messages can also be treated like assets
 - progress indicators when deploying and executing data jobs
+- tools to pretty-print data job I/O
 
 Cloud
 
